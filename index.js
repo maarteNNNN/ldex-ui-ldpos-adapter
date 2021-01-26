@@ -24,7 +24,7 @@ class LiskAdapter {
 
   createWallet() {
     let passphrase = Mnemonic.generateMnemonic();
-    let address = this.getAddressFromPassphrase(passphrase);
+    let address = this.getAddressFromPassphrase({ passphrase });
     return {
       address,
       passphrase
