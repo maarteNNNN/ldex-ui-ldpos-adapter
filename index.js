@@ -13,7 +13,7 @@ class LiskAdapter {
     this.apiTimeout = options.apiTimeout || DEFAULT_API_TIMEOUT;
   }
 
-  prepareTransfer(amount, recipientAddress, message, passphrase) {
+  createTransfer({ amount, recipientAddress, message, passphrase }) {
     return liskTransactions.transfer({
       amount: liskTransactions.utils.convertLSKToBeddows(amount.toString()).toString(),
       recipientId: recipientAddress,
@@ -22,33 +22,33 @@ class LiskAdapter {
     });
   }
 
-  generateWallet() {
+  createWallet() {
     let passphrase = Mnemonic.generateMnemonic();
-    let walletAddress = this.getAddressFromPassphrase(passphrase);
+    let address = this.getAddressFromPassphrase(passphrase);
     return {
-      walletAddress,
+      address,
       passphrase
     };
   }
 
-  validatePassphrase(passphrase) {
+  validatePassphrase({ passphrase }) {
     return Mnemonic.validateMnemonic(passphrase, Mnemonic.wordlists.english);
   }
 
-  getAddressFromPassphrase(passphrase) {
+  getAddressFromPassphrase({ passphrase }) {
     return liskCryptography.getAddressAndPublicKeyFromPassphrase(passphrase).address;
   }
 
-  async postTransaction(transaction) {
+  async postTransaction({ transaction }) {
     await axios.post(`${this.apiURL}/transactions`, transaction);
   }
 
-  async getLatestOutboundTransactions(walletAddress, limit) {
+  async getLatestOutboundTransactions({ address, limit }) {
     let client = axios.create();
     client.defaults.timeout = this.apiTimeout;
     let result = await client.get(
       `${this.apiURL}/transactions?senderId=${
-        walletAddress
+        address
       }&limit=${
         limit || this.apiMaxPageSize
       }&sort=timestamp:desc`
@@ -56,15 +56,15 @@ class LiskAdapter {
     return result.data.data;
   }
 
-  async getAccountBalance(walletAddress) {
+  async getAccountBalance({ address }) {
     let client = axios.create();
     client.defaults.timeout = this.apiTimeout;
-    let response = await client.get(`${this.apiURL}/accounts?address=${walletAddress}`);
+    let response = await client.get(`${this.apiURL}/accounts?address=${address}`);
     let balanceList = Array.isArray(response.data) ? response.data : response.data.data;
     if (!balanceList.length) {
       throw new Error(
         `Failed to fetch account balance for wallet address ${
-          walletAddress
+          address
         } - Could not find any balance records for that account`
       );
     }
