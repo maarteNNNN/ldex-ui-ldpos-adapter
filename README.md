@@ -1,2 +1,2 @@
-# ldex-ui-lisk-adapter
-Lisk client adapter for LDEX UI
+# ldex-ui-ldpos-adapter
+LDPoS client adapter for LDEX UI.
