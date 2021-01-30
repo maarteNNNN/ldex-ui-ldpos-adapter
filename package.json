@@ -1,6 +1,6 @@
 {
   "name": "ldex-ui-ldpos-adapter",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "LDPoS client adapter for LDEX UI.",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,6 @@
   "homepage": "https://github.com/Leasehold/ldex-ui-ldpos-adapter#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "ldpos-client": "^3.0.0"
+    "ldpos-client": "^3.1.0"
   }
 }

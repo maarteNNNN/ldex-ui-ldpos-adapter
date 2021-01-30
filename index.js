@@ -38,7 +38,7 @@ class LDPoSAdapter {
     this.client.disconnect();
   }
 
-  createTransfer({ amount, recipientAddress, message, fee, timestamp }) {
+  async createTransfer({ amount, recipientAddress, message, fee, timestamp }) {
     return this.client.prepareTransaction({
       type: 'transfer',
       recipientAddress,
@@ -49,8 +49,8 @@ class LDPoSAdapter {
     });
   }
 
-  createWallet() {
-    return this.client.generateWallet();
+  createWallet({ networkSymbol }) {
+    return this.client.generateWallet({ networkSymbol });
   }
 
   validatePassphrase({ passphrase }) {
