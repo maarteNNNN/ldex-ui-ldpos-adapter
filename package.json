@@ -24,6 +24,6 @@
   "homepage": "https://github.com/Leasehold/ldex-ui-ldpos-adapter#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "ldpos-client": "^3.1.0"
+    "ldpos-client": "^4.0.0"
   }
 }
