@@ -34,6 +34,9 @@ class LDPoSAdapter {
 
   async connect({ passphrase }) {
     await this.client.connect({ passphrase });
+    try {
+      await this.client.syncKeyIndex('sig');
+    } catch (error) {}
   }
 
   async disconnect() {
@@ -69,6 +72,11 @@ class LDPoSAdapter {
 
   async getLatestOutboundTransactions({ address, limit }) {
     return this.client.getOutboundTransactions(address, null, limit, 'desc');
+  }
+
+  async getAccountNextKeyIndex({ address }) {
+    let account = await this.client.getAccount(address);
+    return account.nextSigKeyIndex;
   }
 
   async getAccountBalance({ address }) {
