@@ -12,6 +12,7 @@ class LDPoSAdapter {
   constructor(options) {
     this.apiURL = options.apiURL;
     this.chainSymbol = options.chainSymbol;
+    this.chainModuleName = options.chainModuleName;
     this.apiMaxPageSize = options.apiMaxPageSize || DEFAULT_API_MAX_PAGE_SIZE;
     this.apiTimeout = options.apiTimeout || DEFAULT_API_TIMEOUT;
     this.nethash = options.nethash || DEFAULT_NETHASH;
@@ -23,6 +24,7 @@ class LDPoSAdapter {
 
     this.client = createClient({
       networkSymbol: this.chainSymbol,
+      chainModuleName: this.chainModuleName,
       hostname: urlParts.hostname,
       port: parseInt(urlParts.port),
       socketProtocolVersion: this.socketProtocolVersion,
