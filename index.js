@@ -56,11 +56,11 @@ class LDPoSAdapter {
     });
   }
 
-  createWallet() {
+  async createWallet() {
     return this.client.generateWallet();
   }
 
-  getAddressFromPassphrase({ passphrase }) {
+  async getAddressFromPassphrase({ passphrase }) {
     return this.client.computeWalletAddressFromPassphrase(passphrase);
   }
 
