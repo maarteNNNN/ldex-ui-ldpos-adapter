@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Leasehold/ldex-ui-ldpos-adapter.git"
+    "url": "git+https://github.com/Capitalisk/ldex-ui-ldpos-adapter.git"
   },
   "keywords": [
     "ldex",
@@ -19,9 +19,9 @@
   "author": "Jonathan Gros-Dubois",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Leasehold/ldex-ui-ldpos-adapter/issues"
+    "url": "https://github.com/Capitalisk/ldex-ui-ldpos-adapter/issues"
   },
-  "homepage": "https://github.com/Leasehold/ldex-ui-ldpos-adapter#readme",
+  "homepage": "https://github.com/Capitalisk/ldex-ui-ldpos-adapter#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "ldpos-client": "^6.0.0"
