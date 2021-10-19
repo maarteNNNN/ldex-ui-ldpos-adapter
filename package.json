@@ -24,6 +24,6 @@
   "homepage": "https://github.com/Capitalisk/ldex-ui-ldpos-adapter#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "ldpos-client": "^7.0.0"
+    "ldpos-client": "^10.2.0"
   }
 }
