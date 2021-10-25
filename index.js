@@ -25,8 +25,10 @@ class LDPoSAdapter {
     this.client = createClient({
       networkSymbol: this.chainSymbol,
       chainModuleName: this.chainModuleName,
+      protocolScheme: urlParts.protocol.split(':')[0],
       hostname: urlParts.hostname,
       port: parseInt(urlParts.port),
+      path: urlParts.path,
       socketProtocolVersion: this.socketProtocolVersion,
       peerProtocolVersion: this.peerProtocolVersion,
       nethash: this.nethash,
